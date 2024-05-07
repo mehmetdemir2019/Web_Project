@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<f:view>
+		<h:form>
+			<h:panelGrid columns="2">
+				Ad = <h:inputText value="#{musteriBean.musteri.ad}" />
+				Soyad = <h:inputText value="#{musteriBean.musteri.soyad}" />
+				Yas = <h:inputText value="#{musteriBean.musteri.yas}" />
+				Cinsiyet = <h:selectOneMenu value="#{musteriBean.musteri.cinsiyet}">
+					<f:selectItem itemValue="Erkek" itemLabel="Erkek" />
+					<f:selectItem itemValue="Kadın" itemLabel="Kadın" />
+				</h:selectOneMenu>
+
+				Sehir = <h:selectOneMenu value="#{musteriBean.musteri.sehir}">
+					<f:selectItem itemValue="Ankara" itemLabel="Ankara" />
+					<f:selectItem itemValue="İstanbul" itemLabel="İstanbul" />
+				</h:selectOneMenu>
+				<h:commandButton value="Kaydet" action="#{musteriBean.kaydet}" />
+			</h:panelGrid>
+		</h:form>
+		<h:form>
+			<h:dataTable value="#{musteriBean.liste}" var="musteri">
+				<f:facet name="header">
+            Musteri Listesi
+        </f:facet>
+				<h:column>
+					<f:facet name="header">Musteri Adi</f:facet>
+					<h:outputText value="#{musteri.ad}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Musteri Soyadi</f:facet>
+					<h:outputText value="#{musteri.soyad}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Musteri Yasi</f:facet>
+					<h:outputText value="#{musteri.yas}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Musteri Cinsiyeti</f:facet>
+					<h:outputText value="#{musteri.cinsiyet}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Musteri Sehiri</f:facet>
+					<h:outputText value="#{musteri.sehir}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</f:view>
+</body>
+</html>
