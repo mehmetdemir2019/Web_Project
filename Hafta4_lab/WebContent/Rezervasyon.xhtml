@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<f:view>
+		<h:form>
+			<p:panelGrid columns="2">
+				Ulke No: <p:inputText value="#{ogrenciView.ogrenci.anahtar.ulkeNo}" />
+				Kimlik No: <p:inputText
+					value="#{ogrenciView.ogrenci.anahtar.kimlikNo}" />
+				Ad: <p:inputText value="#{ogrenciView.ogrenci.ad}" />
+				Soyad: <p:inputText value="#{ogrenciView.ogrenci.soyad}" />
+				Yas: <p:inputText value="#{ogrenciView.ogrenci.yas}" />
+				Cinsiyet: <p:selectOneMenu id="Cinsiyet"
+					value="#{ogrenciView.ogrenci.cinsiyet}">
+					<f:selectItem itemValue="Erkek" itemLabel="Erkek" />
+					<f:selectItem itemValue="Kadin" itemLabel="Kadin" />
+				</p:selectOneMenu>
+				Cadde: <p:inputText value="#{ogrenciView.ogrenci.adres.cadde}" />
+				Sokak: <p:inputText value="#{ogrenciView.ogrenci.adres.sokak}" />
+				Sehir: <p:selectOneMenu id="Sehir"
+					value="#{ogrenciView.ogrenci.sehir}">
+					<f:selectItem itemLabel="Kayseri" itemValue="Kayseri" />
+					<f:selectItem itemLabel="Istanbul" itemValue="Istanbul" />
+					<f:selectItem itemLabel="Ankara" itemValue="Ankara" />
+				</p:selectOneMenu>
+				Otel: <p:selectOneRadio value="#{ogrenciView.ogrenci.otel}">
+					<f:selectItem itemLabel="JW Marriott Ankara"
+						itemValue="JW Marriott Ankara" />
+					<f:selectItem itemLabel="Radisson" itemValue="Radisson" />
+					<f:selectItem itemLabel="Hilton" itemValue="Hilton" />
+				</p:selectOneRadio>
+				Oda Tipi: <p:selectOneRadio value="#{ogrenciView.ogrenci.odaTipi}">
+					<f:selectItem itemLabel="Tek Kisilik" itemValue="Tek Kisilik" />
+
+					<f:selectItem itemLabel="2 kisilik" itemValue="2 kisilik" />
+					<f:selectItem itemLabel="Aile" itemValue="Aile" />
+				</p:selectOneRadio>
+				<p:commandButton action="#{ogrenciView.kaydet()}" value="Kaydet" />
+			</p:panelGrid>
+			<p:dataTable value="#{ogrenciView.liste}" var="cls">
+				<f:facet name="header">	Ogrenciler</f:facet>
+				<p:column>
+					<f:facet name="header">Sil</f:facet>
+					<h:commandLink action="#{ogrenciView.sil()}" value="Sil">
+						<f:setPropertyActionListener value="#{cls}"
+							target="#{ogrenciView.ogrenci}" />
+					</h:commandLink>
+				</p:column>
+				<p:column>
+					<f:facet name="header">Sec</f:facet>
+					<h:commandLink value="Sec">
+						<f:setPropertyActionListener value="#{cls}"
+							target="#{ogrenciView.ogrenci}" />
+					</h:commandLink>
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ad</f:facet>
+					<h:outputText value="#{cls.ad}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Soyad</f:facet>
+					<h:outputText value="#{cls.soyad}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Yas</f:facet>
+					<h:outputText value="#{cls.yas}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Cinsiyet</f:facet>
+					<h:outputText value="#{cls.cinsiyet}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Sokak</f:facet>
+					<h:outputText value="#{cls.adres.sokak}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Cadde</f:facet>
+					<h:outputText value="#{cls.adres.cadde}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Sehir</f:facet>
+					<h:outputText value="#{cls.sehir}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Otel</f:facet>
+					<h:outputText value="#{cls.otel}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Oda Tipi</f:facet>
+					<h:outputText value="#{cls.odaTipi}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</f:view>
+</body>
+</html>
